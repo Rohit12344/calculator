@@ -1,0 +1,92 @@
+@font-face {
+    font-family: "Anamoly Regular";
+    src: url('./Anomoly\ Regular.ttf');
+  }
+
+body
+{
+    font-family: "Anamoly Regular";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
+}
+
+.container
+{
+    padding: 30px;
+    border: 3px solid black;
+    border-radius: 15px;
+    width: 380px;
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    background-color: #e9f0f4;
+}
+
+.screen
+{
+    background-color: #363b44;
+    flex-grow: 1;
+    border: 5px solid #8119d0;
+    border-radius: 12px;
+    margin-bottom: 35px;
+}
+
+.buttons
+{
+    background-color: #30475d;
+    flex-grow: 1.25;
+    border-radius: 12px;
+    border: 5px solid #8119d0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 0 40px;
+}
+
+.buttons > div
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+button
+{
+    color: #fcfaf8;
+    background-color: #222427;
+    padding: 10px;
+    width: 60px;
+    height: 60px;
+    border-radius: 15px;
+    font-size: 24px;
+    border: 0;
+}
+
+button:hover
+{
+    cursor: pointer;
+    background-color: #48494a;
+}
+
+button:active
+{
+    font-size: 19px;
+    background-color: #333333;
+}
+
+#equals
+{
+    flex-grow: 0.7;
+}
+
+#clear,#ac
+{
+    flex-grow: 0.3;
+    color: #ee5354;
+}
+
+#divide,#plus,#minus,#into,#equals
+{
+    color: #ee5354;
+}
