@@ -27,16 +27,36 @@ body
 .screen
 {
     background-color: #363b44;
-    flex-grow: 1;
+    height: 20%;
     border: 5px solid #8119d0;
     border-radius: 12px;
     margin-bottom: 35px;
+    padding: 5px 10px;
 }
 
+.top-text
+{
+    box-sizing: border-box;
+    height: 40%;
+    color: #ee5354;
+    padding: 15px 15px;
+    font-size: 20px;
+    text-align: right;
+}
+
+.bottom-text
+{
+    box-sizing: border-box;
+    padding: 15px 15px;
+    height: 60%;
+    color: #ee5354;
+    font-size: 40px;
+    text-align: right;
+}
 .buttons
 {
     background-color: #30475d;
-    flex-grow: 1.25;
+    flex-grow: 1;
     border-radius: 12px;
     border: 5px solid #8119d0;
     display: flex;
@@ -80,7 +100,7 @@ button:active
     flex-grow: 0.7;
 }
 
-#clear,#ac
+#clear,#del
 {
     flex-grow: 0.3;
     color: #ee5354;
