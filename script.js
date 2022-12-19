@@ -140,7 +140,7 @@ function equalFunction(event)
     }
 }
 
-function clearFunction(event)
+function clearFunction()
 {
     bottomText.textContent = 0;
     topText.textContent = '';
@@ -156,6 +156,13 @@ function delFunction()
     if (bottomText.textContent === '')
     {
         bottomText.textContent = 0;
+        secondNum = 0;
+    }
+    if(topText.textContent.includes('='))
+    {
+        firstNum = bottomText.textContent;
+        secondNum = undefined;
+        symbol = undefined;
     }
 }
 
