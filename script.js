@@ -66,7 +66,7 @@ function truncateDisplay(num)
             num = +num;
             return num.toFixed(temp);
         }
-        alert("Can't display the result because the result exceed the display range of numbers with 13 characters including '.'");
+        alert("Can't display the result because the result exceed the display range of numbers (13 characters including '.'). Please delete some numbers or press 'C' button in order to continue the calculation.");
         return undefined;
     }
 }
@@ -86,7 +86,7 @@ function display(event)
             }
             else
             {
-                alert("Can't enter numbers more than 13 characters including '.'. Please delete some in order to continue the calculation.")
+                alert("Can't enter numbers more than 13 characters including '.'. Please delete some numbers or press 'C' button in order to continue the calculation.")
             }
             
         }
@@ -103,7 +103,7 @@ function display(event)
             }
             else
             {
-                alert("Can't enter numbers more than 13 characters including '.'. Please delete some in order to continue the calculation.")
+                alert("Can't enter numbers more than 13 characters including '.'. Please delete some numbers or press 'C' button in order to continue the calculation.")
             }
         }
 }
