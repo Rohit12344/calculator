@@ -31,7 +31,7 @@ function operate(a, b, operator) {
   }
 }
 
-let firstNum = 0,
+let temp = 0,firstNum = 0,
   secondNum,
   symbol;
 const topText = document.querySelector(".top-text");
@@ -70,7 +70,9 @@ function truncateDisplay(num) {
 
 function display(event) {
   if (symbol === undefined) {
-    if (bottomText.textContent === "0") {
+    if (
+      (bottomText.textContent === "0" || topText.textContent.includes("=")) &&
+      !firstNum) {
       bottomText.textContent = "";
     }
     if (bottomText.textContent.length < 13) {
@@ -104,8 +106,16 @@ function operateFunction(event) {
       secondNum = undefined;
     }
   }
+  if(firstNum === 0 && topText.textContent.includes('='))
+  {
+    firstNum = temp; 
+  }
+
   topText.textContent = "";
-  topText.textContent += firstNum + " " + event.target.textContent;
+
+    topText.textContent +=
+    truncateDisplay(firstNum) + " " + event.target.textContent;
+
   symbol = event.target.textContent;
 }
 
@@ -114,7 +124,7 @@ function equalFunction(event) {
     if (truncateDisplay(operate(+firstNum, +secondNum, symbol)) !== undefined) {
       topText.textContent = "";
       topText.textContent +=
-        firstNum +
+        truncateDisplay(firstNum) +
         " " +
         symbol +
         " " +
@@ -123,6 +133,8 @@ function equalFunction(event) {
         event.target.textContent;
       firstNum = operate(+firstNum, +secondNum, symbol);
       bottomText.textContent = truncateDisplay(firstNum);
+      temp = firstNum;
+      firstNum = 0;
       secondNum = undefined;
       symbol = undefined;
     }
@@ -142,7 +154,13 @@ function delFunction() {
     0,
     bottomText.textContent.length - 1
   );
-  secondNum = bottomText.textContent;
+
+  if (secondNum === undefined && symbol === undefined) {
+    firstNum = bottomText.textContent;
+  } else {
+    secondNum = bottomText.textContent;
+  }
+
   if (bottomText.textContent === "") {
     bottomText.textContent = 0;
     secondNum = 0;
@@ -155,8 +173,44 @@ function delFunction() {
 }
 
 function dotFunction() {
-    if(!bottomText.textContent.includes('.'))
-    bottomText.textContent += '.';
+  if (!bottomText.textContent.includes(".")) {
+    if (topText.textContent === "") {
+      bottomText.textContent += ".";
+    } else {
+      if (symbol === undefined) {
+        if (firstNum === 0) {
+          bottomText.textContent = "";
+          bottomText.textContent += "0.";
+          firstNum = bottomText.textContent;
+        } else {
+          bottomText.textContent += ".";
+        }
+      } else {
+        if (secondNum === undefined) {
+          bottomText.textContent = "";
+          bottomText.textContent += "0.";
+          secondNum = 0;
+        } else {
+          bottomText.textContent += ".";
+        }
+      }
+    }
+  } else {
+    if (symbol === undefined) {
+      if (firstNum === 0) {
+        bottomText.textContent = "";
+        bottomText.textContent += "0.";
+        firstNum = bottomText.textContent;
+      } else {
+        bottomText.textContent += ".";
+      }
+    }
+    if (firstNum && secondNum === undefined && symbol) {
+      bottomText.textContent = "";
+      bottomText.textContent += "0.";
+      secondNum = 0;
+    }
+  }
 }
 
 numbers.forEach((number) => number.addEventListener("click", display));
